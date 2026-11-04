@@ -1,0 +1,50 @@
+---
+layout: runbook
+title: '#4471 · two problems, not one'
+owner: HugoDulce
+status: open
+reviewed: 2026-11-04
+signature: v1.eyJzdWIiOiI3MjciLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzgxNDU0NSwiZXhwIjoxNzkzOTAwOTQ1fQ.pOqNcVio7DoYiqKgBkVU766t88qHKltnOk4fgSpvwfE
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues';
+  const filed = {
+    parser: { label: 'ticket 1', href: repo + '/1' },
+    hint: { label: 'ticket 2', href: repo + '/2' },
+  };
+</script>
+
+[#4471](/kb/incidents/4471) says one issue with one fix queued. Its reports hold two problems, and the queued fix reaches only one of them.
+
+<Callout kind="warn">
+Do not close the reports in #4471 when the parser fix ships. The form hint needs its own fix, and its reports will continue until that fix ships.
+</Callout>
+
+## The two problems
+
+<CauseTable ticket={4471} {filed} />
+
+**`parser`:** The shared parser reads every date month first, so the dates of day-first tenants come out flipped. This reaches every tenant and every channel. [Ticket 1](https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/1) tracks it.
+
+**`hint`:** The `booking-v3` form prints `MM/DD/YYYY` under its date field, then reads the date day first. People type what the hint says, so their dates come out flipped too. Only form reports from day-first tenants on `booking-v3` have this cause. [Ticket 2](https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/2) tracks it.
+
+## How to read the counts
+
+- The table is computed when the page renders, by `causes.ts`. Do not retype its numbers.
+- The cause comes from the tenant and the channel, not from `intakeTag`. Intake guesses from the reporter's browser, and the table shows how often it disagrees.
+- The export repeats some reports, because its pages overlap. The table counts each id once.
+
+## What is still unconfirmed
+
+The one-day reports under the table do not look like a flip. A flip cannot turn 12 May into 11 May. The desk files them under `parser` by tenant, and this page keeps that rule, but nobody has confirmed their cause. Read them again after the parser fix ships. If they keep coming, they need their own ticket.
+
+## Why one ticket hid this
+
+Both problems produce the same complaint, so their subject lines match. [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject alone, and the [triage page](/kb/triage/dedupe) repeats that rule. A decision is never edited, so the desk needs a new record that replaces it: merge on cause, not on subject.
+
+<RenderStamp {signature} />

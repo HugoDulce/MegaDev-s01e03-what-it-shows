@@ -34,3 +34,7 @@ Support desk. Decision records: whoever signed them.
 ---
 
 Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
+
+## Build (added for the #4471 split)
+
+`npm install`, `npm run build`, then `node scripts/standalone.mjs kb/incidents/4471-split`. The page as the desk sees it is in `rendered/`.

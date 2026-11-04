@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--e2jw2j--><!----><title>#4471 · two problems, not one · support kb</title>
+		<style>:root{--bg: #fbfaf7;--fg: #1d1d1b;--muted: #6b6a66;--line: #e3e0d8;--accent: #2f6f5e;--warn: #b4501f;--warn-bg: #fbeee6;--note-bg: #eef5f2;--mono: ui-monospace, "Cascadia Code", Menlo, monospace}@media(prefers-color-scheme:dark){:root{--bg: #171716;--fg: #ecebe6;--muted: #9c9a93;--line: #34332f;--accent: #6fbfa6;--warn: #f0905d;--warn-bg: #3a2418;--note-bg: #1d2c27}}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}.kb table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.kb th,.kb td{border-bottom:1px solid var(--line);padding:.35rem .5rem;text-align:left}.kb code{font-family:var(--mono);font-size:.88em}.kb a{color:var(--accent)}.kb.svelte-e2jw2j{max-width:760px;margin:0 auto;padding:2rem 16px 4rem}.crumb.svelte-e2jw2j{font:.8rem var(--mono);text-decoration:none;color:var(--muted)}h1.svelte-e2jw2j{margin:.25rem 0 .5rem;line-height:1.2}.meta.svelte-e2jw2j{display:flex;flex-wrap:wrap;gap:.5rem 1rem;color:var(--muted);font-size:.85rem;margin:0}.status.svelte-e2jw2j{border:1px solid var(--line);border-radius:99px;padding:0 .6rem}.stale.svelte-e2jw2j{color:var(--warn);font-weight:600}.banner.svelte-e2jw2j{background:var(--warn-bg);color:var(--warn);padding:.6rem 1rem;border-radius:6px}footer.svelte-e2jw2j{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+</style>
+		<style>aside.svelte-17bri61{border-left:4px solid var(--accent);padding:.5rem 1rem;margin:1rem 0;background:var(--note-bg)}aside.warn.svelte-17bri61{border-color:var(--warn);background:var(--warn-bg)}
+</style>
+		<style>.sum.svelte-12oyimm{font-size:1.1rem}.tags.svelte-12oyimm,.note.svelte-12oyimm{color:var(--muted);font-size:.85em}.wrong.svelte-12oyimm td:where(.svelte-12oyimm){background:var(--warn-bg)}.wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child{color:var(--warn);font-weight:600}
+</style>
+		<style>.stamp.svelte-1280m42{margin:2rem 0 0;font:.85rem var(--mono);color:var(--muted)}.stamp.svelte-1280m42 b:where(.svelte-1280m42){color:var(--accent);letter-spacing:.04em}.missing.svelte-1280m42{color:var(--warn)}
+</style>
+  </head>
+  <body><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · two problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>HugoDulce</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-11-04 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> says one issue with one fix queued. Its reports hold two problems, and the queued fix reaches only one of them.</p> <aside class="warn svelte-17bri61"><!---->Do not close the reports in #4471 when the parser fix ships. The form hint needs its own fix, and its reports will continue until that fix ships.<!----></aside><!----> <h2>The two problems</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><!--[0--><td class="svelte-12oyimm"><a href="https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/1">ticket 1</a></td><!--]--></tr><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><!--[0--><td class="svelte-12oyimm"><a href="https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/2">ticket 2</a></td><!--]--></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <p><strong><code>parser</code>:</strong> The shared parser reads every date month first, so the dates of day-first tenants come out flipped. This reaches every tenant and every channel. <a href="https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/1" rel="nofollow">Ticket 1</a> tracks it.</p> <p><strong><code>hint</code>:</strong> The <code>booking-v3</code> form prints <code>MM/DD/YYYY</code> under its date field, then reads the date day first. People type what the hint says, so their dates come out flipped too. Only form reports from day-first tenants on <code>booking-v3</code> have this cause. <a href="https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/2" rel="nofollow">Ticket 2</a> tracks it.</p> <h2>How to read the counts</h2> <ul><li>The table is computed when the page renders, by <code>causes.ts</code>. Do not retype its numbers.</li> <li>The cause comes from the tenant and the channel, not from <code>intakeTag</code>. Intake guesses from the reporter’s browser, and the table shows how often it disagrees.</li> <li>The export repeats some reports, because its pages overlap. The table counts each id once.</li></ul> <h2>What is still unconfirmed</h2> <p>The one-day reports under the table do not look like a flip. A flip cannot turn 12 May into 11 May. The desk files them under <code>parser</code> by tenant, and this page keeps that rule, but nobody has confirmed their cause. Read them again after the parser fix ships. If they keep coming, they need their own ticket.</p> <h2>Why one ticket hid this</h2> <p>Both problems produce the same complaint, so their subject lines match. <a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges on subject alone, and the <a href="/kb/triage/dedupe">triage page</a> repeats that rule. A decision is never edited, so the desk needs a new record that replaces it: merge on cause, not on subject.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-ZP6V-MBSK</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			
+		</body>
+</html>
