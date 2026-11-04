@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · two problems, not one'
 owner: HugoDulce
-status: open
+status: closed
 reviewed: 2026-11-04
 signature: v1.eyJzdWIiOiI3MjciLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzgxNDU0NSwiZXhwIjoxNzkzOTAwOTQ1fQ.pOqNcVio7DoYiqKgBkVU766t88qHKltnOk4fgSpvwfE
 ---
@@ -14,24 +14,24 @@ signature: v1.eyJzdWIiOiI3MjciLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdC
 
   const repo = 'https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues';
   const filed = {
-    parser: { label: 'ticket 1', href: repo + '/1' },
-    hint: { label: 'ticket 2', href: repo + '/2' },
+    parser: { label: 'ticket 1 · fixed', href: repo + '/1' },
+    hint: { label: "ticket 2 · won't fix", href: repo + '/2' },
   };
 </script>
 
-[#4471](/kb/incidents/4471) says one issue with one fix queued. Its reports hold two problems, and the queued fix reaches only one of them.
+[#4471](/kb/incidents/4471) says one issue with one fix queued. Its reports held two problems, and they ended differently. Engineering closed #4471 on 5 October.
 
-<Callout kind="warn">
-Do not close the reports in #4471 when the parser fix ships. The form hint needs its own fix, and its reports will continue until that fix ships.
+<Callout>
+`parser` is fixed by `fix(dates): parse dd/mm for eu locales`. `hint` is won't fix, because the `booking-v3` form is retired. The parser fix did not fix `hint`. Retiring the form removes it.
 </Callout>
 
 ## The two problems
 
 <CauseTable ticket={4471} {filed} />
 
-**`parser`:** The shared parser reads every date month first, so the dates of day-first tenants come out flipped. This reaches every tenant and every channel. [Ticket 1](https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/1) tracks it.
+**`parser`, fixed:** The shared parser read every date month first, so the dates of day-first tenants came out flipped. This reached every tenant and every channel. [Ticket 1](https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/1) is closed as completed.
 
-**`hint`:** The `booking-v3` form prints `MM/DD/YYYY` under its date field, then reads the date day first. People type what the hint says, so their dates come out flipped too. Only form reports from day-first tenants on `booking-v3` have this cause. [Ticket 2](https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/2) tracks it.
+**`hint`, won't fix:** The `booking-v3` form printed `MM/DD/YYYY` under its date field, then read the date day first. People typed what the hint said, so their dates came out flipped too. Only form reports from day-first tenants on `booking-v3` had this cause. [Ticket 2](https://github.com/HugoDulce/MegaDev-s01e03-what-it-shows/issues/2) is closed as not planned.
 
 ## How to read the counts
 
@@ -41,10 +41,11 @@ Do not close the reports in #4471 when the parser fix ships. The form hint needs
 
 ## What is still unconfirmed
 
-The one-day reports under the table do not look like a flip. A flip cannot turn 12 May into 11 May. The desk files them under `parser` by tenant, and this page keeps that rule, but nobody has confirmed their cause. Read them again after the parser fix ships. If they keep coming, they need their own ticket.
+- **The fix's reach.** The fix names EU locales. `harbour.dental` writes dates in `en-GB`, which is day first but not an EU locale. Check that the fix covers that tenant.
+- **The one-day reports.** The reports noted under the table do not look like a flip. A flip cannot turn 12 May into 11 May. The desk files them under `parser` by tenant, and this page keeps that rule, but nobody has confirmed their cause. If they keep coming after the fix, they need their own ticket.
 
 ## Why one ticket hid this
 
-Both problems produce the same complaint, so their subject lines match. [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject alone, and the [triage page](/kb/triage/dedupe) repeats that rule. A decision is never edited, so the desk needs a new record that replaces it: merge on cause, not on subject.
+Both problems produced the same complaint, so their subject lines matched. [Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges on subject alone, and the [triage page](/kb/triage/dedupe) repeats that rule. A decision is never edited, so the desk needs a new record that replaces it: merge on cause, not on subject.
 
 <RenderStamp {signature} />
